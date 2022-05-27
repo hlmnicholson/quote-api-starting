@@ -74,6 +74,24 @@ app.put('/api/quotes', (req, res, next) => {
     res.status(400).send();
   }
 });
+
+app.delete('/api/quotes', (req, res, next) => {
+  const person = req.query.person;
+  let index = findIndex(quotes, person);
+
+  if (person && index !== -1) {
+
+    //delete the quote
+    //send appropriate status code
+      
+    // res.send({
+    //   quote: quotes[index]
+    // });
+            
+  } else {
+    res.status(400).send();
+  }
+});
         
         
         
