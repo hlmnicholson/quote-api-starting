@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 const { quotes } = require('./data');
-const { getRandomElement } = require('./utils');
+const { getRandomElement, getQuote } = require('./utils');
 
 const PORT = process.env.PORT || 4001;
 
@@ -19,9 +19,15 @@ app.get('/api/quotes', (req, res, next) => {
   let person = req.query.person;
   
   if (!(person)) {
-    res.send(quotes);
+    res.send({
+      quotes: quotes
+    });
   } else {
-    
+    const quoteObj = getQuote(quotes, person);
+    const response = {
+      quotes: quoteObj
+    }
+    res.send(response);
   }
 })
 
