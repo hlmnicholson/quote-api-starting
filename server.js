@@ -17,18 +17,38 @@ app.get('/api/quotes/random', (req, res, next) => {
 
 app.get('/api/quotes', (req, res, next) => {
   let person = req.query.person;
-  
-  if (!(person)) {
-    res.send({
-      quotes: quotes
-    });
-  } else {
+  if (person !== undefined) {
     const quoteObj = getQuote(quotes, person);
-    const response = {
-      quotes: quoteObj
-    }
+    const response = { quotes: quoteObj }
     res.send(response);
+
+    } else {
+      res.send({
+        quotes: quotes
+      });
+    }
   }
+);
+
+app.post('/api/quotes', (req, res, next) => {
+  if (req.query.quote && req.query.person) {
+    const quote = req.query.quote;
+    const person = req.query.person;
+
+    const quoteObj = {
+      quote: quote,
+      person: person
+    }
+
+    quotes.push(quoteObj);
+    res.send({
+      quote: quoteObj
+    });
+
+  } else {
+    res.status(400).send();
+  }
+
 })
 
 
