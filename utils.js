@@ -5,10 +5,15 @@ const getRandomElement = arr => {
 
 const getQuote = (arr, requested) => {
   if (!Array.isArray(arr)) throw new Error('Expected an array');
-  return arr.filter(obj => obj.person === requested);
+  return arr.filter(obj => obj.person.toLowerCase() === requested.toLowerCase());
 }
+
+const findIndex = (arr, requested) => {
+  return arr.findIndex(object => object.person.toLowerCase() === requested.toLowerCase());  
+} 
 
 module.exports = {
   getRandomElement,
-  getQuote
+  getQuote,
+  findIndex
 };
