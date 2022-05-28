@@ -32,6 +32,8 @@ Open [http://localhost:4001](http://localhost:4001) to view it in your browser.
 ## Project Status
 
 MVP completed according to requirements - this app is only intended for learning and practicing with Node, Express, routing and API creation.
+Post-MVP: I'm currently working on put and delete routing that will bring the application up to a fully working CRUD status. In addition, I would like to link with a second, exisiting api (potentially wikipedia) and allow uses to access further data on the author's of the quotes.
+
 
 ## Acknowledgements
 
