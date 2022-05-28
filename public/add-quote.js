@@ -1,7 +1,9 @@
 const submitButton = document.getElementById('submit-quote');
 const newQuoteContainer = document.getElementById('new-quote');
 
+
 submitButton.addEventListener('click', () => {
+  newQuoteContainer.removeChild(newQuoteContainer.firstChild);
   const quote = document.getElementById('quote').value;
   const person = document.getElementById('person').value;
 
