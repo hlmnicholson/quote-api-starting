@@ -21,8 +21,8 @@ app.get('/api/quotes', (req, res, next) => {
   let person = req.query.person;
   if (person !== undefined) {
     const quoteObj = getQuote(quotes, person);
-    const response = { quotes: quoteObj }
-    res.send(response);
+    // const response = { quotes: quoteObj }
+    res.status(200).send(quoteObj[0]);
 
     } else {
       res.send({
@@ -77,17 +77,14 @@ app.put('/api/quotes', (req, res, next) => {
 
 app.delete('/api/quotes', (req, res, next) => {
   const person = req.query.person;
+  const quote = getQuote(quotes, person);
   let index = findIndex(quotes, person);
+  if (index !== -1) {
+    quotes.splice(index, 1);
+    res.status(200).send({
+      quote: quote[0]
+    });
 
-  if (person && index !== -1) {
-
-    //delete the quote
-    //send appropriate status code
-      
-    // res.send({
-    //   quote: quotes[index]
-    // });
-            
   } else {
     res.status(400).send();
   }
